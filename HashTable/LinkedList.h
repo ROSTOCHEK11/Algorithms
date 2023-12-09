@@ -9,10 +9,10 @@ template<typename T>
 class Node
 {
 public:
-	Node* pNext; // указатель на след елемент
-	T data; // данные елемента / узла 
+	Node* pNext; 
+	T data; 
 
-	Node(T data = T(), Node* pNext = nullptr) {  // конструктор который создадёт сам узел
+	Node(T data = T(), Node* pNext = nullptr) {  
 
 		this->data = data;
 		this->pNext = pNext;
@@ -55,7 +55,7 @@ private:
 
 
 	int Size;
-	Node<T>* head; // первый елемент листа
+	Node<T>* head; 
 
 
 };
@@ -122,9 +122,9 @@ void List<T>::Insert(T data, int index)
 		for (int i = 0; i < index - 1; i++) {
 			previous = previous->pNext;
 		}
-		// предыдущему елементу присваиваем указатель на новый
-		previous->pNext = new Node<T>(data, previous->pNext); // присваиваем новому елементу указатель на след елемент,
-		//то есть указатель пред елемента на след елемент
+		
+		previous->pNext = new Node<T>(data, previous->pNext); 
+		
 		Size++;
 
 	}
@@ -136,7 +136,7 @@ template<typename T>
 void List<T>::AddFront(T data)
 {
 
-	head = new Node<T>(data, head); // создаём новый хед и в качестве указателя на след елемент ставим старый хед
+	head = new Node<T>(data, head); 
 	Size++;
 
 
@@ -147,7 +147,7 @@ template<typename T>
 void List<T>::Clear()
 {
 
-	while (head != nullptr) // когда САйз будет 0 для вайла это будет фолс
+	while (head != nullptr) 
 	{
 		Node<T>* temp = head;
 		head = head->pNext;
@@ -167,7 +167,7 @@ void List<T>::DelFirst()
 	else
 	{
 		Node<T>* temp = head;
-		head = head->pNext; // делаем хедом след елемент
+		head = head->pNext; 
 		delete temp;
 		Size--;
 	}
@@ -182,7 +182,7 @@ void List<T>::DelLast()
 		cout << "CAN`T delete the LAST element; the list is EMPTY." << endl;
 	}
 	else if (head->pNext == nullptr) {
-		// один елемент в листе
+		
 		Clear();
 	}
 	else {
@@ -205,20 +205,20 @@ void List<T>::AddBack(T data)
 
 	if (head == nullptr) {
 
-		head = new Node<T>(data); // создание узла первым елементом
+		head = new Node<T>(data); 
 
 	}
 	else
 	{
 
-		Node<T>* current = this->head; // временная переменная
+		Node<T>* current = this->head; 
 
 		while (current->pNext != nullptr) {
 
-			current = current->pNext; // присваивание врем.пер указатель на след елемент пока не дойдём до НУЛЛА
+			current = current->pNext; 
 
 		}
-		current->pNext = new Node<T>(data); // и тут когда мы дошли док конца - мы присваеваем адрес новой ноды указателю
+		current->pNext = new Node<T>(data); 
 
 	}
 
@@ -249,20 +249,6 @@ void List<T>::Display()
 
 
 
-//template<typename T>
-//int Compare( T& a,T& b)
-//{
-//	if (a == b)
-//	{
-//		return 0;
-//	}
-//	else
-//	{
-//		return 1;
-//	}
-//}
-
-
 template<typename T>
 T& List<T>::operator[](const int index)
 {
@@ -277,7 +263,7 @@ T& List<T>::operator[](const int index)
 			return current->data;
 
 		}
-		current = current->pNext; // в текущий елемент присваиваем адресс следущего елемента
+		current = current->pNext; 
 		counter++;
 
 	}
